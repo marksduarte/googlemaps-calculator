@@ -1,0 +1,24 @@
+{    
+    "name": "Calculadora Google Maps",
+    "short_name": "Calculadora",
+    "description": "Calcula o valor e a quantidade de combustível necessária para percorrer o trajeto definido no Google Maps.",
+    "version": "1.0",
+    "manifest_version": 2,
+    "permissions": ["tabs", "background", "<all_urls>"],
+    "homepage_url":"https://marksduarte.github.io",
+    "browser_action": {
+      "default_title": "Calculadora Google Maps",
+      "default_icon": "img/icon.png",
+      "default_popup": "html/popup.html"
+    },
+    "background": {                
+      "scripts": ["js/background.js"],
+      "persistent": false      
+    },
+    "content_scripts": [{
+      "matches": ["https://www.google.com.br/maps/*", "<all_urls>"],
+      "all_frames": true,
+      "js": ["js/content.js"]
+    }]
+           
+  }
