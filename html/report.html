@@ -3,41 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
-    <style>
-      .bg-riedel {
-        background-color: #0d2d42;
-      }
-      .row-riedel {
-        margin-top: 8px;
-        margin-bottom: 8px;
-      }
-      .horizontalLine {
-        margin: auto;
-        transform: rotate(0deg);
-        width: 50%;
-        height: 2px;
-        background: #1b1e21;
-      }
-      .assinatura {
-        text-align: center;
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <script type="application/javascript" src="../js/report.js"></script>
+    <script type="application/javascript" src="../js/jquery.min.js"></script>
     <title>Relatório</title>
   </head>
   <body class="m-3">
-    <div id="renderPDF" class="container">
+    <div id="imprimir" class="container">
       <div class="border border-dark container-fluid">
-        <div
-          class="row pl-1 pt-2 border-bottom border-dark bg-riedel text-white"
-        >
-          <img
-            class="d-inline"
-            src="../img/logo.png"
-            width="40px"
-            height="40px"
-            alt=""
-          />
-          <h2 class="d-inline pl-2">Relatório de percursos</h2>
+        <div class="row pl-1 pt-2 border-bottom border-dark bg-riedel text-white">
+          <img class="d-inline" src="../img/logo.png" width="40px" height="40px" alt=""/>
+          <h2 class="d-inline pl-2">Relatório de Reembolso</h2>
         </div>
         <div class="row row-riedel">
           <div class="input-group col-3">
@@ -116,8 +92,15 @@
         </div>
         <div class="dropdown-divider"></div>
         <label><h5>Trajeto</h5></label>
-        <div class="row col" id="trajetos">
-
+        <ul class="list-group" id="trajetos">
+          <!-- Gerado dinâmicamente -->
+        </ul>
+        <div class="dropdown-divider"></div>
+        <div class="row">
+          <div class="col-12">
+            <h5>Observações</h5>
+            <textarea id="observacoes" class="form-control" rows="3"></textarea>
+          </div>
         </div>
         <div class="row mt-5">
           <div class="col-6 horizontalLine"></div>
@@ -125,10 +108,14 @@
         <div class="row mb-3">
           <p class="col assinatura">Coordenador Responsável</p>
         </div>
+        <footer class="blockquote-footer">
+          <p>
+            Critério de reembolso: Quilometragem média rodada por ano, ipva, licenciamento, depreciação e revisão.
+            <br>
+            Veículo usado como base: Grand Siena ATTRAC. 1.4 EVO F.Flex 8V | 2012
+          </p>
+        </footer>
       </div>
     </div>
-    <script type="application/javascript" src="../js/report.js"></script>
-    <script type="application/javascript" src="../js/jquery.min.js"></script>
-    <script type="application/javascript" src="../js/jquery.mask.min.js"></script>
   </body>
 </html>

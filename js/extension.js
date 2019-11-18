@@ -39,22 +39,21 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             let valorPorLitro = textToFloat($("#valorPorLitro").val());
             let litros = kmTotal / kmPorLitro;
             let combustivel = valorPorLitro / kmPorLitro;
-            let fipe = 28935; //Grand Siena ATTRAC. 1.4 EVO F.Flex 8V | 2012
+            let fipe = 25000; //Grand Siena ATTRAC. 1.4 EVO F.Flex 8V | 2012
             let seguro = 0; //Biroliro derrubou
             let licenciamento = 100;
             let ipva = fipe * 0.03;
             let ipvaSeguroLicenciamento = ((ipva + seguro + licenciamento) / kmTotalAno);
             let depreciacao = (0.15 * fipe) / kmTotalAno;
-            let custoRevisao = ((kmTotalAno / 10000) * 500) / kmTotalAno;
+            let custoRevisao = ((kmTotalAno / 10000) * 300) / kmTotalAno; // R$ 300 valor médio da revisão
             let custoKm = combustivel + ipvaSeguroLicenciamento + depreciacao + custoRevisao;
 
-            let valorReembolso = floatToText(litros * (valorPorLitro + custoKm));
-                //floatToText(valorPorLitro === 0 ? litros * 4.1 : litros * valorPorLitro);
+            let valorReembolso = floatToText(kmTotal * custoKm);
 
-            $("#kmTotal").val(kmTotal);
-            $("#litros").val(floatToText(litros) + " L");
+            $("#kmTotal").val(floatToText(kmTotal));
+            $("#litros").val(floatToText(litros));
             $("#valorReembolso").val(valorReembolso);
-            console.log(request.obj.trajetos);
+
             report.trajetos = request.obj.trajetos.slice();
         }
     }
@@ -71,7 +70,6 @@ function calcular() {
 }
 
 function Imprimir() {
-    // Send a message to background.js to create new tab
     report.numOS = $("#numOS").val();
     report.colaborador = $("#colaborador").val();
     report.valorPorLitro = $("#valorPorLitro").val();
@@ -79,7 +77,8 @@ function Imprimir() {
     report.kmTotal = $("#kmTotal").val();
     report.litros = $("#litros").val();
     report.valorReembolso = $("#valorReembolso").val();
-    chrome.runtime.sendMessage({message: "create_new_tab", report: report});
+    report.observacoes = $("#observacoes").val();
+    chrome.runtime.sendMessage({message: "create_new_window", report: report});
 }
 
 function isEmpty(inputText) {

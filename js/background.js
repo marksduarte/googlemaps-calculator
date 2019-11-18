@@ -1,7 +1,6 @@
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){  
-    var response;  
-    if(request.message === "create_new_tab") {        
-        createNewTab(request.report);
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    if(request.message === "create_new_window") {
+        createNewWindow(request.report);
     }      
     if(request.message === "update_tab_maps") {                
         if(!request.activetab.url.startsWith("https://www.google.com.br/maps")) {
@@ -13,14 +12,14 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
     return true;
 });
 
-function createNewTab(obj) {
+function createNewWindow(obj) {
     var targetId = null;
     chrome.tabs.onUpdated.addListener(function listener(tabId, changedProps) {
-        if(tabId != targetId || changedProps.status != "complete") return;
-        chrome.runtime.sendMessage({message: "load_new_tab", data: obj});
+        if(tabId !== targetId || changedProps.status !== "complete") return;
+        chrome.runtime.sendMessage({message: "load_new_window", data: obj});
     });
-    var newTabUrl = chrome.extension.getURL('html/report.html');
-    chrome.tabs.create({url: newTabUrl, active: false}, function(tab) {
-        targetId = tab.id;
+    var newWindowUrl = chrome.extension.getURL('html/report.html');
+    chrome.windows.create({url: newWindowUrl, type: "popup"}, function(window) {
+        targetId = window.tabs[0].id;
     });
 }

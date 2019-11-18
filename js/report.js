@@ -1,9 +1,8 @@
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
     switch (request.message){
-        case "load_new_tab":
+        case "load_new_window":
+            console.log("report.js called!")
             var report = request.data;
-            console.log(report);
-            //You have the object as request.data with tabUrl and tabHtml
             $('#numOS').val(report.numOS);
             $('#colaborador').val(report.colaborador);
             $('#valorPorLitro').val(report.valorPorLitro);
@@ -11,9 +10,12 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
             $('#kmTotal').val(report.kmTotal);
             $('#litros').val(report.litros);
             $('#valorReembolso').val(report.valorReembolso);
-            for (let i = 0; i < report.directions.length; i++) {
-                $('#trajetos').append('<div class="p-2"><span class="badge badge-primary badge-pill mr-2">'+ (i+1) +'</span>'+report.directions[i]+'</div>');
+            $('#observacoes').val(report.observacoes);
+            for (let i = 0; i < report.trajetos.length; i++) {
+                $('#trajetos').append('<li class="list-group-item"><span class="badge badge-primary badge-pill mr-2">'+ (i+1) +'</span>'+report.trajetos[i]+'</li>');
             }
+            window.print();
+            window.close();
             break;
     }
 });

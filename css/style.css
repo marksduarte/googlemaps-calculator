@@ -1,0 +1,22 @@
+.popup-width {
+    width: 350px;
+}
+
+.bg-riedel {
+    background-color: #0d2d42;
+}
+.row-riedel {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.horizontalLine {
+    margin: auto;
+    transform: rotate(0deg);
+    width: 50%;
+    height: 2px;
+    background: #1b1e21;
+}
+.assinatura {
+    text-align: center;
+}
+

@@ -5,106 +5,106 @@
     <script type="application/javascript" src="../js/jquery.min.js"></script>
     <script type="application/javascript" src="../js/jquery.mask.min.js"></script>
     <script type="application/javascript" src="../js/extension.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>    
-    <style>
-        body{
-            width: 350px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
     <title>Calculadora</title>
 </head>
 <body>
-    <div class="container-fluid mt-3">
-        <div class="row">
-            <!-- O.S -->
-            <div class="col-8">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="pt-md-2 input-group-text">O.S</span>
-                    </div>
-                    <input required autocomplete="off" class="form-control numOS" id="numOS">
+<div id="formulario" class="container-fluid popup-width">
+    <div class="row pl-1 pt-2 pb-2 border-dark bg-riedel text-white">
+        <img src="../img/logo.png" width="40px" height="40px" alt="logo"/>
+        <h5 class="pl-2 pt-2">Calculadora de Combustível</h5>
+    </div>
+    <div class="row mt-2">
+        <!-- O.S -->
+        <div class="col-8">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="pt-md-2 input-group-text">O.S</span>
                 </div>
+                <input required autocomplete="off" class="form-control numOS" id="numOS">
             </div>
         </div>
-        <div class="row mt-2">
-            <!-- Colaborador -->
-            <div class="col-12">
-                <div class="input-group">
-                    <input required autocomplete="off" class="form-control" id="colaborador" placeholder="Colaborador">
-                </div>
+    </div>
+    <div class="row mt-2">
+        <!-- Colaborador -->
+        <div class="col-12">
+            <div class="input-group">
+                <input required autocomplete="off" class="form-control" id="colaborador" placeholder="Colaborador">
             </div>
         </div>
-        <div class="dropdown-divider"></div>
-        <div class="row">
-            <!-- Valor do Litro -->
-            <div class="col-6">
-                <h5>Valor do Litro</h5>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="pt-md-2 input-group-text">R$</span>
-                    </div>
-                    <input required class="form-control" id="valorPorLitro">
+    </div>
+    <div class="dropdown-divider"></div>
+    <div class="row">
+        <!-- Valor do Litro -->
+        <div class="col-6">
+            <h5>Valor do Litro</h5>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="pt-md-2 input-group-text">R$</span>
                 </div>
-            </div>
-            <!-- KM/Litro -->
-            <div class="col-6">
-                <h5>KM/Litro</h5>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="pt-md-2 input-group-text">Km</span>
-                    </div>
-                    <input class="form-control" id="kmPorLitro">
-                </div>
+                <input required class="form-control" id="valorPorLitro">
             </div>
         </div>
-        <div class="row mt-2">
-            <!-- Distancia -->
-            <div class="col-6">
-                <h5>Distância</h5>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="pt-md-2 input-group-text">Km</span>
-                    </div>
-                    <input disabled class="form-control" id="kmTotal">
+        <!-- KM/Litro -->
+        <div class="col-6">
+            <h5>Consumo</h5>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="pt-md-2 input-group-text">Km/L</span>
                 </div>
+                <input class="form-control" id="kmPorLitro">
             </div>
-            <!-- Litros -->
-            <div class="col-6">
-                <h5>Litros</h5>
-                <div class="input-group">
-                    <input disabled class="form-control" id="litros">
+        </div>
+    </div>
+    <div class="row mt-2">
+        <!-- Distancia -->
+        <div class="col-6">
+            <h5>Combustível</h5>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="pt-md-2 input-group-text">Km</span>
                 </div>
+                <input disabled class="form-control" id="kmTotal">
             </div>
         </div>
-        <div class="row mt-2 mb-2">
-            <!-- Valor Total -->
-            <div class="col-6">
-                <h5>Valor Total</h5>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="pt-md-2 input-group-text">R$</span>
-                    </div>
-                    <input disabled class="form-control" id="valorReembolso">
+        <!-- Litros -->
+        <div class="col-6">
+            <h5>Litros</h5>
+            <div class="input-group">
+                <input disabled class="form-control" id="litros">
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2 mb-2">
+        <!-- Valor Total -->
+        <div class="col-6">
+            <h5>Reembolso</h5>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="pt-md-2 input-group-text">R$</span>
                 </div>
-            </div>
-            <!-- Botão -->
-            <div class="col-6">
-                <h5><span style="opacity:0;">invisible</span></h5>
-                <button class="btn btn-success btn-block" id="btnCalcular">Calcular</button>
+                <input disabled class="form-control" id="valorReembolso">
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <h5>Observações</h5>
-                <textarea id="observations" class="form-control" rows="3"></textarea>
-            </div>
+        <!-- Botão -->
+        <div class="col-6">
+            <h5><span style="opacity:0;">invisible</span></h5>
+            <button class="btn btn-success btn-block" id="btnCalcular">Calcular</button>
         </div>
-        <div class="dropdown-divider"></div>
-        <div class="row mt-2 mb-2">
-            <div class="col-12">
-                <button class="btn btn-danger btn-lg btn-block" id="btnImprimir">Gerar Relatório</button>
-            </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h5>Observações</h5>
+            <textarea id="observacoes" class="form-control" rows="2"></textarea>
         </div>
-    </div>        
+    </div>
+    <div class="dropdown-divider"></div>
+    <div class="row mt-2 mb-2">
+        <div class="col-12">
+            <button class="btn btn-danger btn-lg btn-block" id="btnImprimir">Gerar Relatório</button>
+        </div>
+    </div>
+</div>
 </body>
 </html>
