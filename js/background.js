@@ -1,3 +1,6 @@
+/**
+ * Listener to manipulate windows and tabs
+ */
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if(request.message === "create_new_window") {
         createNewWindow(request.report);
@@ -12,6 +15,10 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     return true;
 });
 
+/**
+ * Create the new popup window with tab to load and print the report.html.
+ * @param obj
+ */
 function createNewWindow(obj) {
     var targetId = null;
     chrome.tabs.onUpdated.addListener(function listener(tabId, changedProps) {

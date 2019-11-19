@@ -1,121 +1,103 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
     <script type="application/javascript" src="../js/report.js"></script>
     <script type="application/javascript" src="../js/jquery.min.js"></script>
     <title>Relatório</title>
-  </head>
-  <body class="m-3">
-    <div id="imprimir" class="container">
-      <div class="border border-dark container-fluid">
-        <div class="row pl-1 pt-2 border-bottom border-dark bg-riedel text-white">
+</head>
+<body>
+<div id="imprimir" class="container">
+    <div class="border border-dark container">
+      <div class="row pl-1 pt-2 border-bottom border-dark bg-title text-white">
           <img class="d-inline" src="../img/logo.png" width="40px" height="40px" alt=""/>
-          <h2 class="d-inline pl-2">Relatório de Reembolso</h2>
-        </div>
-        <div class="row row-riedel">
-          <div class="input-group col-3">
-            <div class="input-group-prepend">
-              <span class="pt-md-2 input-group-text">
-                <b>O.S</b>
-              </span>
-            </div>
-            <input class="form-control" id="numOS" />
-          </div>
-          <div class="input-group col-9">
-            <div class="input-group-prepend">
-              <span class="pt-md-2 input-group-text">
-                <b>Colaborador</b>
-              </span>
-            </div>
-            <input class="form-control" id="colaborador" />
-          </div>
-        </div>
-        <div class="row row-riedel">
+          <h2 class="d-inline pl-2">Solicitação de Reembolso de Combustíveis</h2>
+      </div>
+      <div class="row row-riedel">
           <div class="col">
-            <label>Valor do Litro</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="pt-md-2 input-group-text">
-                  <b>R$</b>
-                </span>
+            <div class="card text-center bg-info text-white">
+              <div class="card-body">
+                <h4 class="card-title" id="valorPorLitro">R$ 4,10</h4>
+                <h6 class="card-text">Valor do Litro</h6>
               </div>
-              <input class="form-control" id="valorPorLitro" />
             </div>
           </div>
-          <div class="col">
-            <label>Consumo</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="pt-md-2 input-group-text">
-                  <b>Km/L</b>
-                </span>
-              </div>
-              <input class="form-control" id="kmPorLitro" />
-            </div>
-          </div>
-          <div class="col">
-            <label>Distância</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="pt-md-2 input-group-text">
-                  <b>Km</b>
-                </span>
-              </div>
-              <input class="form-control" id="kmTotal" />
-            </div>
-          </div>
-          <div class="col">
-            <label>Combustível</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="pt-md-2 input-group-text">
-                  <b>Lt</b>
-                </span>
-              </div>
-              <input class="form-control" id="litros" />
-            </div>
-          </div>
-          <div class="col">
-            <label>Reembolso</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="pt-md-2 input-group-text">
-                  <b>R$</b>
-                </span>
-              </div>
-              <input class="form-control" id="valorReembolso" />
+        <div class="col">
+          <div class="card text-center bg-info text-white">
+            <div class="card-body">
+              <h4 class="card-title" id="kmPorLitro">10 Km/L</h4>
+              <h6 class="card-text">Consumo</h6>
             </div>
           </div>
         </div>
-        <div class="dropdown-divider"></div>
-        <label><h5>Trajeto</h5></label>
-        <ul class="list-group" id="trajetos">
-          <!-- Gerado dinâmicamente -->
-        </ul>
-        <div class="dropdown-divider"></div>
-        <div class="row">
-          <div class="col-12">
-            <h5>Observações</h5>
-            <textarea id="observacoes" class="form-control" rows="3"></textarea>
+        <div class="col">
+        <div class="card text-center bg-danger text-white">
+          <div class="card-body">
+            <h4 class="card-title" id="kmTotal">51,50 Km</h4>
+            <h6 class="card-text">Trajeto</h6>
           </div>
         </div>
-        <div class="row mt-5">
-          <div class="col-6 horizontalLine"></div>
+      </div>
+      <div class="col">
+        <div class="card text-center bg-danger text-white">
+          <div class="card-body">
+            <h4 class="card-title" id="litros">5,15 L</h4>
+            <h6 class="card-text">Combustível</h6>
+          </div>
         </div>
-        <div class="row mb-3">
-          <p class="col assinatura">Coordenador Responsável</p>
+      </div>
+      <div class="col">
+        <div class="card text-center bg-success text-white">
+          <div class="card-body">
+            <h4 class="card-title" id="valorReembolso">R$ 45,44</h4>
+            <h6 class="card-text">Reembolso</h6>
+          </div>
         </div>
-        <footer class="blockquote-footer">
-          <p>
-            Critério de reembolso: Quilometragem média rodada por ano, ipva, licenciamento, depreciação e revisão.
-            <br>
-            Veículo usado como base: Grand Siena ATTRAC. 1.4 EVO F.Flex 8V | 2012
-          </p>
-        </footer>
       </div>
     </div>
-  </body>
+      <div class="dropdown-divider"></div>
+      <!--  Solicitante e O.S    -->
+      <div class="row row-riedel">
+        <h5 class="col-1 font-weight-bold">O.S:</h5>
+        <h5 class="col-4 tab" id="numOS">2015-12345</h5>
+      </div>
+      <div class="row row-riedel">
+        <h5 class="col-1 font-weight-bold">Solicitante:</h5>
+        <h5 class="col-4 tab" id="colaborador">Marks Duarte</h5>
+        <h5 class="col-1 font-weight-bold">Setor:</h5>
+        <h5 class="col-4 tab" id="setor">Adm. Distrital</h5>
+      </div>
+      <div class="dropdown-divider"></div>
+      <!--   Trajetos   -->
+      <h5 class="font-weight-bold">Trajetos:</h5>
+      <ul class="list-group" id="trajetos">
+          <!-- Gerado dinâmicamente -->
+      </ul>
+      <div class="dropdown-divider"></div>
+      <!--   Observações   -->
+      <div class="row">
+          <div class="col-12">
+              <h5 class="font-weight-bold">Observações:</h5>
+              <p id="observacoes"></p>
+          </div>
+      </div>
+      <div class="row mt-5">
+          <div class="col-6 horizontalLine"></div>
+      </div>
+      <div class="row mb-3">
+          <p class="col sign">Coordenador Responsável</p>
+      </div>
+      <footer class="blockquote-footer">
+          <p>
+              Critério de reembolso: Quilometragem média rodada por ano, ipva, licenciamento, depreciação e revisão.
+              <br>
+              Veículo usado como base: Grand Siena ATTRAC. 1.4 EVO F.Flex 8V | 2012
+          </p>
+      </footer>
+    </div>
+</div>
+</body>
 </html>

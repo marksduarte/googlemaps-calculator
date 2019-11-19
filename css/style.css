@@ -1,13 +1,17 @@
+body{
+    font-family: 'Lato', sans-serif;
+}
+ul {
+    list-style: none;
+}
 .popup-width {
     width: 350px;
 }
-
-.bg-riedel {
+.bg-title {
     background-color: #0d2d42;
 }
 .row-riedel {
-    margin-top: 8px;
-    margin-bottom: 8px;
+    margin-top: 4px;
 }
 .horizontalLine {
     margin: auto;
@@ -16,7 +20,10 @@
     height: 2px;
     background: #1b1e21;
 }
-.assinatura {
+.sign {
     text-align: center;
 }
-
+.tab {
+    display: inline-block;
+    margin-left: 20px;
+}

@@ -39,13 +39,13 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             let valorPorLitro = textToFloat($("#valorPorLitro").val());
             let litros = kmTotal / kmPorLitro;
             let combustivel = valorPorLitro / kmPorLitro;
-            let fipe = 25000; //Grand Siena ATTRAC. 1.4 EVO F.Flex 8V | 2012
+            let fipe = 28000; //Grand Siena ATTRAC. 1.4 EVO F.Flex 8V | 2012
             let seguro = 0; //Biroliro derrubou
             let licenciamento = 100;
             let ipva = fipe * 0.03;
             let ipvaSeguroLicenciamento = ((ipva + seguro + licenciamento) / kmTotalAno);
             let depreciacao = (0.15 * fipe) / kmTotalAno;
-            let custoRevisao = ((kmTotalAno / 10000) * 300) / kmTotalAno; // R$ 300 valor médio da revisão
+            let custoRevisao = ((kmTotalAno / 10000) * 500) / kmTotalAno; // R$ 500 valor médio da revisão
             let custoKm = combustivel + ipvaSeguroLicenciamento + depreciacao + custoRevisao;
 
             let valorReembolso = floatToText(kmTotal * custoKm);
@@ -72,11 +72,11 @@ function calcular() {
 function Imprimir() {
     report.numOS = $("#numOS").val();
     report.colaborador = $("#colaborador").val();
-    report.valorPorLitro = $("#valorPorLitro").val();
-    report.kmPorLitro = $("#kmPorLitro").val();
-    report.kmTotal = $("#kmTotal").val();
-    report.litros = $("#litros").val();
-    report.valorReembolso = $("#valorReembolso").val();
+    report.valorPorLitro = 'R$ ' + $("#valorPorLitro").val();
+    report.kmPorLitro = $("#kmPorLitro").val() + ' Km/L';
+    report.kmTotal = $("#kmTotal").val() + ' Km';
+    report.litros = $("#litros").val() + ' L';
+    report.valorReembolso = 'R$ ' + $("#valorReembolso").val();
     report.observacoes = $("#observacoes").val();
     chrome.runtime.sendMessage({message: "create_new_window", report: report});
 }
