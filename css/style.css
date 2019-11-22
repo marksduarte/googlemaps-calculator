@@ -1,11 +1,11 @@
 body{
-    font-family: 'Lato', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 ul {
     list-style: none;
 }
 .popup-width {
-    width: 350px;
+    width: 400px;
 }
 .bg-title {
     background-color: #0d2d42;
@@ -25,5 +25,5 @@ ul {
 }
 .tab {
     display: inline-block;
-    margin-left: 20px;
+    margin-left: 20px;    
 }

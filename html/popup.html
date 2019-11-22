@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">   
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="../css/style.css"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
-    <script type="application/javascript" src="../js/jquery.min.js"></script>
-    <script type="application/javascript" src="../js/jquery.mask.min.js"></script>
-    <script type="application/javascript" src="../js/extension.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
     <title>Calculadora</title>
 </head>
 <body>
@@ -18,7 +15,7 @@
     </div>
     <div class="row mb-2">
         <!-- O.S -->
-        <div class="col-8">
+        <div class="col-6">
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="pt-md-2 input-group-text"><b>O.S</b></span>
@@ -26,25 +23,23 @@
                 <input autocomplete="off" class="form-control numOS" id="numOS">
             </div>
         </div>
-    </div>
-    <div class="row mb-2">
-        <div class="col-12">
-            <select id="setor" class="form-control input-group-text" required>
-                <option selected>Setor</option>
-                <option>Adm. Distrital</option>
-                <option>Adm. Federal</option>
-                <option>Cível</option>
-                <option>Consultivo</option>
-                <option>Criminal</option>
-                <option>Diretoria</option>
-                <option>Localização e Agendamento</option>
-                <option>Previdenciário</option>
-                <option>Processos Especiais</option>
-                <option>Trabalhista</option>
-                <option>Tributário</option>
-            </select>
-        </div>
-    </div>
+        <div class="col-6">
+                <select id="setor" class="form-control input-group-text" required>
+                    <option selected>Setor</option>
+                    <option>Adm. Distrital</option>
+                    <option>Adm. Federal</option>
+                    <option>Cível</option>
+                    <option>Consultivo</option>
+                    <option>Criminal</option>
+                    <option>Diretoria</option>
+                    <option>Localização</option>
+                    <option>Previdenciário</option>
+                    <option>Proc. Especiais</option>
+                    <option>Trabalhista</option>
+                    <option>Tributário</option>
+                </select>
+            </div>
+    </div>    
     <div class="row">
         <!-- Colaborador -->
         <div class="col-12">
@@ -57,7 +52,7 @@
     <div class="row">
         <!-- Valor do Litro -->
         <div class="col-6">
-            <h6>Valor do Litro</h6>
+            <h6>Custo do litro</h6>
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="pt-md-2 input-group-text"><b>R$</b></span>
@@ -97,9 +92,31 @@
                 <input disabled class="form-control" id="litros">
             </div>
         </div>
+    </div>    
+    <!-- Base de cálculo -->
+    <div class="row mt-2" style="display: none;">
+        <div class="dropdown-divider"></div>
+        <div class="col-6">
+            <h6>Base de cálculo</h6>
+            <div class="custom-control custom-radio custom-control-inline">  
+                <input type="radio" name="radioBaseCalculo" id="baseLitro" class="custom-control-input" value="litro" checked>
+                <label for="baseLitro" class="custom-control-label">Litro</label>
+            </div>            
+            <div class="custom-control custom-radio custom-control-inline">  
+                <input type="radio" name="radioBaseCalculo" id="baseKm" class="custom-control-input" value="km">
+                <label for="baseKm" class="custom-control-label">Km</label>
+            </div>
+        </div>
+        <div class="col-6">
+            <h6><span style="opacity:0;">invisible</span></h6>
+            <div class="text-center">                                     
+                <h6 class="card-text font-weight-bold" id="fatorCalculo"></h6>  
+            </div>
+        </div>
     </div>
+    <div class="dropdown-divider"></div>
     <div class="row mt-2 mb-2">
-        <!-- Valor Total -->
+        <!-- Valor Reembolso -->
         <div class="col-6">
             <h6>Reembolso</h6>
             <div class="input-group">
@@ -128,5 +145,8 @@
         </div>
     </div>
 </div>
+<script type="application/javascript" src="../js/jquery.min.js"></script>
+<script type="application/javascript" src="../js/jquery.mask.min.js"></script>
+<script type="application/javascript" src="../js/extension.js"></script>
 </body>
 </html>

@@ -9,7 +9,7 @@ window.onload = function () {
     $("#kmPorLitro").val("10");
 
     $("#btnCalcular").on("click", calcular);
-    $("#btnImprimir").on("click", Imprimir);
+    $("#btnImprimir").on("click", Imprimir);        
 
     chrome.windows.getCurrent(function (currentWindow) {
         chrome.tabs.query({active: true, windowId: currentWindow.id}, function (
@@ -33,32 +33,49 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             isEmpty($("#kmPorLitro"));
             isEmpty($("#valorPorLitro"));
 
-            let kmTotalAno = 12000;
-            let kmTotal = textToFloat(request.obj.kmTotal);
-            let kmPorLitro = textToFloat($("#kmPorLitro").val());
-            let valorPorLitro = textToFloat($("#valorPorLitro").val());
-            let litros = kmTotal / kmPorLitro;
-            let combustivel = valorPorLitro / kmPorLitro;
-            let fipe = 28000; //Grand Siena ATTRAC. 1.4 EVO F.Flex 8V | 2012
-            let seguro = 0; //Biroliro derrubou
-            let licenciamento = 100;
-            let ipva = fipe * 0.03;
-            let ipvaSeguroLicenciamento = ((ipva + seguro + licenciamento) / kmTotalAno);
-            let depreciacao = (0.15 * fipe) / kmTotalAno;
-            let custoRevisao = ((kmTotalAno / 10000) * 500) / kmTotalAno; // R$ 500 valor médio da revisão
-            let custoKm = combustivel + ipvaSeguroLicenciamento + depreciacao + custoRevisao;
+            var kmTotalAno = 12000;
+            var kmTotal = textToFloat(request.obj.kmTotal);
+            var kmPorLitro = textToFloat($("#kmPorLitro").val());
+            var valorPorLitro = textToFloat($("#valorPorLitro").val());
+            var litros = kmTotal / kmPorLitro;
+            var combustivel = valorPorLitro / kmPorLitro;
+            var fipe = 28935; //Grand Siena ATTRAC. 1.4 EVO F.Flex 8V
+            var seguro = 0; //Biroliro derrubou
+            var licenciamento = 100;
+            var ipva = fipe * 0.03;
+            var ipvaSeguroLicenciamento = ((ipva + seguro + licenciamento) / kmTotalAno);
+            var depreciacao = (0.15 * fipe) / kmTotalAno;
+            var custoRevisao = ((kmTotalAno / 10000) * 500) / kmTotalAno; // R$ 500 valor médio da revisão
+            var custoKm = combustivel + ipvaSeguroLicenciamento + depreciacao + custoRevisao;   
 
-            let valorReembolso = floatToText(kmTotal * custoKm);
-
-            $("#kmTotal").val(floatToText(kmTotal));
-            $("#litros").val(floatToText(litros));
-            $("#valorReembolso").val(valorReembolso);
-
+            calculaBaseReembolso(litros, valorPorLitro, custoKm, kmTotal);        
+            
+            $("#kmTotal").val(kmTotal);
+            $("#litros").val(litros);
+            
             report.trajetos = request.obj.trajetos.slice();
         }
     }
     return true;
 });
+
+function calculaBaseReembolso(litros, valorPorLitro, custoKm, kmTotal) {  
+    let baseCalculo = $("input[name=radioBaseCalculo]:checked").val();
+    let txtfatorCalculo;
+    let valorReembolso;              
+    if(baseCalculo !== '') {
+        if(baseCalculo === 'litro') {                        
+            valorReembolso = floatToText(litros * (valorPorLitro + custoKm));
+            txtfatorCalculo = "R$ " + floatToText(valorPorLitro + custoKm);
+        }
+        if(baseCalculo === 'km') {
+            valorReembolso = floatToText(kmTotal * custoKm);
+            txtfatorCalculo = "R$ " + floatToText(custoKm);
+        }
+        $("#fatorCalculo").text(txtfatorCalculo);
+        $("#valorReembolso").val(valorReembolso);
+    }                   
+};    
 
 function calcular() {
     // Execute content script in active tab.
