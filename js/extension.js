@@ -1,11 +1,13 @@
 var report = {};
+const valorMedioGasolina = 4.44; //em 22/11/2019 - DF
+
 window.onload = function () {
     $("#valorPorLitro").mask("#.##0,00", {reverse: true});
     $("#kmPorLitro").mask("##0,0", {reverse: true});
     $("#valorReembolso").mask("#.##0,00", {reverse: true});
     $("#numOS").mask("0000-00000");
 
-    $("#valorPorLitro").val("4,10");
+    $("#valorPorLitro").val(this.floatToText(valorMedioGasolina));
     $("#kmPorLitro").val("10");
 
     $("#btnCalcular").on("click", calcular);
@@ -78,6 +80,7 @@ function calculaBaseReembolso(litros, valorPorLitro, custoKm, kmTotal) {
 };    
 
 function calcular() {
+    alert("Click!");
     // Execute content script in active tab.
     chrome.windows.getCurrent(function (currentWindow) {
         chrome.tabs.query({active: true, windowId: currentWindow.id}, function (tabs) {
@@ -87,6 +90,7 @@ function calcular() {
 }
 
 function Imprimir() {
+    report.cliente = $("#cliente").val();
     report.numOS = $("#numOS").val();
     report.colaborador = $("#colaborador").val();
     report.valorPorLitro = 'R$ ' + $("#valorPorLitro").val();
@@ -101,7 +105,7 @@ function Imprimir() {
 function isEmpty(inputText) {
     if (inputText.val() === "" || inputText.val() === 0) {
         if (inputText.name.startsWith("km")) inputText.val("10,00");
-        if (inputText.name.startsWith("val")) inputText.val("4,10");
+        if (inputText.name.startsWith("val")) inputText.val(textToFloat(valorMedioGasolina));
     }
 }
 

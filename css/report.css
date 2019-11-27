@@ -1,17 +1,5 @@
-body{
-    font-family: 'Open Sans', sans-serif;
-}
-ul {
-    list-style: none;
-}
-.popup-width {
-    width: 400px;
-}
-.bg-title {
+.report-title {
     background-color: #0d2d42;
-}
-.row-riedel {
-    margin-top: 4px;
 }
 .horizontalLine {
     margin: auto;
@@ -26,4 +14,7 @@ ul {
 .tab {
     display: inline-block;
     margin-left: 20px;    
+}
+.row {
+    margin-bottom: 10px;
 }

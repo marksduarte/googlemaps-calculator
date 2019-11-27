@@ -1,0 +1,67 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css");
+
+ul {
+    list-style: none;
+}
+.row {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Estilos da barra */
+
+#calculadora-google-maps {     
+    border-radius: 10px;
+    font-family: 'Open Sans', sans-serif;
+    z-index: 2147483647;
+    min-width: 450px;
+    min-height: auto;
+    width: 500px;
+    position: fixed;
+    top: 2%;    
+    right: 2%;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+#calc-header {
+    background-color:#4285f4; /*#0d2d42*/;   
+    padding: 5px;     
+    border-radius: 10px 10px 0 0;
+}
+#calc-body {  
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 0px 0px 10px 10px;
+}
+.calc-logo {
+    color: white;
+    display: flex;    
+    flex-direction: row;   
+    align-items: center;    
+}
+.calc-logo a img {
+    margin-right: 10px;
+}
+.calc-title {
+    padding-top: 10px;
+}
+
+.horizontalLine {
+    margin: auto;
+    transform: rotate(0deg);
+    width: 50%;
+    height: 2px;
+    background: #1b1e21;
+}
+.sign {
+    text-align: center;
+}
+.tab {
+    display: inline-block;
+    margin-left: 20px;    
+}

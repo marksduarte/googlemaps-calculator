@@ -8,17 +8,25 @@
     "homepage_url":"https://marksduarte.github.io",
     "browser_action": {
       "default_title": "Calculadora Google Maps",
-      "default_icon": "img/icon.png",
-      "default_popup": "html/popup.html"
+      "default_icon": "img/icon.png"      
     },
     "background": {                
       "scripts": ["js/background.js"],
       "persistent": false      
     },
     "content_scripts": [{
-      "matches": ["https://www.google.com.br/maps/*"],
-      "all_frames": true,
-      "js": ["js/content.js"]
-    }]
-           
+      "matches": ["https://www.google.com.br/maps/dir/*"],
+      "all_frames": true,      
+      "js": [
+        "js/jquery-3.4.1.min.js",          
+        "js/content.js"
+      ]
+    }],
+    "web_accessible_resources": [
+      "img/*.png",
+      "img/*.svg",
+      "css/*.css",
+      "js/*.js",
+      "html/*.html"
+    ]               
   }

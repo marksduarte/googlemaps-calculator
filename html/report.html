@@ -1,41 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8"/>
-    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">   
+    <meta charset="UTF-8"/>  
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-datepicker.standalone.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../css/report.css"/>
+    <link rel="shortcut icon" href="../img/icon.png" type="image/x-icon">
     <title>Relatório</title>
 </head>
 <body>
-<div id="imprimir" class="container">
+<div id="report" class="container">
     <div class="border border-dark container">
-      <div class="row pl-1 pt-2 border-bottom border-dark bg-title text-white">
+      <div class="row pl-1 pt-2 border-bottom border-dark report-title text-white">
           <img class="d-inline" src="../img/logo.png" width="40px" height="40px" alt=""/>
           <h2 class="d-inline pl-2">Solicitação de Reembolso de Combustíveis</h2>
       </div>
-      <div class="row row-riedel">
+      <div class="row">
           <div class="col">
             <div class="card text-center bg-info text-white">
               <div class="card-body">
-                <h4 class="card-title" id="valorPorLitro">R$ 4,10</h4>
+                <h4 class="card-title" id="vlLitro">R$ 4,10</h4>
                 <h6 class="card-text">Valor do Litro</h6>
               </div>
             </div>
-          </div>
-        <div class="col">
-          <div class="card text-center bg-info text-white">
-            <div class="card-body">
-              <h4 class="card-title" id="kmPorLitro">10 Km/L</h4>
-              <h6 class="card-text">Consumo</h6>
-            </div>
-          </div>
-        </div>
+          </div>        
         <div class="col">
         <div class="card text-center bg-danger text-white">
           <div class="card-body">
             <h4 class="card-title" id="kmTotal">51,50 Km</h4>
-            <h6 class="card-text">Trajeto</h6>
+            <h6 class="card-text">Distância</h6>
           </div>
         </div>
       </div>
@@ -54,50 +48,105 @@
             <h6 class="card-text">Reembolso</h6>
           </div>
         </div>
-      </div>
+      </div>      
     </div>
+    <div class="row">
+        <ul class="list-group" id="trajetos">
+            <!-- Gerado dinâmicamente -->
+        </ul>
+    </div>
+    <div class="dropdown-divider"></div>
+    <!--Formulário-->
+    <form action="">
+      <div class="row">   
+        <!-- Data -->     
+        <div class="col-3">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                  </span>
+              </div>
+              <input autocomplete="off" type="text" id="dtRelatorio" class="form-control date" maxlength="10">
+            </div>          
+        </div>
+        <!-- O.S -->
+        <div class="col-3">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><b>O.S</b></span>
+                </div>
+                <input autocomplete="off" class="form-control numOS" id="numOS">
+            </div>
+        </div>   
+        <!-- Cliente -->
+        <div class="col">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                </div>
+                <input autocomplete="off" class="form-control" id="cliente" placeholder="Nome do cliente">
+            </div>
+        </div>                          
+      </div>    
       <div class="dropdown-divider"></div>
-      <!--  Solicitante e O.S    -->
-      <div class="row row-riedel">
-        <h5 class="col-1 font-weight-bold">O.S:</h5>
-        <h5 class="col-4 tab" id="numOS">2015-12345</h5>
-      </div>
-      <div class="row row-riedel">
-        <h5 class="col-1 font-weight-bold">Solicitante:</h5>
-        <h5 class="col-4 tab" id="colaborador">Marks Duarte</h5>
-        <h5 class="col-1 font-weight-bold">Setor:</h5>
-        <h5 class="col-4 tab" id="setor">Adm. Distrital</h5>
-      </div>
-      <div class="dropdown-divider"></div>
-      <!--   Trajetos   -->
-      <h5 class="font-weight-bold">Trajetos:</h5>
-      <ul class="list-group" id="trajetos">
-          <!-- Gerado dinâmicamente -->
-      </ul>
-      <div class="dropdown-divider"></div>
-      <!--   Observações   -->
-      <div class="row">
-          <div class="col-12">
-              <h5 class="font-weight-bold">Observações:</h5>
-              <p id="observacoes"></p>
+      <div class="row"> 
+        <div class="col-3">
+
+        </div>
+        <!-- Setor -->
+        <div class="col-3">
+          <select id="setor" class="form-control input-group-text">
+            <option selected>Setor</option>
+            <option>Adm. Distrital</option>
+            <option>Adm. Federal</option>
+            <option>Cível</option>
+            <option>Consultivo</option>
+            <option>Criminal</option>
+            <option>Diretoria</option>
+            <option>Localização</option>
+            <option>Previdenciário</option>
+            <option>Proc. Especiais</option>
+            <option>Trabalhista</option>
+            <option>Tributário</option>
+          </select>
+        </div>  
+        <!-- Colaborador -->
+        <div class="col-6">
+          <div class="input-group">
+              <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-user"></i></span>
+              </div>
+              <input class="form-control" id="colaborador" placeholder="Colaborador">
           </div>
-      </div>
-      <div class="row mt-5">
-          <div class="col-6 horizontalLine"></div>
-      </div>
-      <div class="row mb-3">
-          <p class="col sign">Coordenador Responsável</p>
-      </div>
-      <footer class="blockquote-footer">
-          <p>
-              Critério de reembolso: Quilometragem média rodada por ano, ipva, licenciamento, depreciação e revisão.
-              <br>
-              Veículo usado como base: Grand Siena ATTRAC. 1.4 EVO F.Flex 8V | 2012
-          </p>
-      </footer>
+        </div>           
+      </div> 
+      <div class="row">
+        <div class="col-12">
+            <h6>Observações</h6>
+            <textarea autocomplete="off" id="observacoes" class="form-control" rows="2"></textarea>
+        </div>
+      </div> 
+    </form>  
+    <div class="row mt-5">
+        <div class="col-6 horizontalLine"></div>
     </div>
+    <div class="row mb-3">
+        <p class="col sign">Coordenador Responsável</p>
+    </div>
+    <footer class="blockquote-footer">
+        <p>
+            <strong>Observação:</strong> O reembolso será pago quinzenalmente via transferência bancária de acordo com as solicitações entregues até o dia anterior ao do pagamento.
+            <br>
+            <strong>Critérios de cálculo:</strong> Quilometragem média anual, Seguro obrigatório, Licenciamento, Valor médio de revisão anual e Depreciação do veículo.
+        </p>
+    </footer>
+  </div>
 </div>
+<script type="application/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="application/javascript" src="../js/jquery.mask.min.js"></script>
+<script type="application/javascript" src="../js/bootstrap-datepicker.min.js"></script>
+<script type="application/javascript" src="../js/bootstrap-datepicker.pt-BR.min.js"></script>
 <script type="application/javascript" src="../js/report.js"></script>
-<script type="application/javascript" src="../js/jquery.min.js"></script>
 </body>
 </html>
