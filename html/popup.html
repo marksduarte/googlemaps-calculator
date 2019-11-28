@@ -1,32 +1,63 @@
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/popup.css">
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../fonts/css/font-awesome.css">
 <body>
     <div id="calculadora-google-maps">
-        <nav id="calc-header" class="navbar navbar-expand-lg">
-            <div class="col-2 calc-logo">
-                <a href="https://chrome.google.com/webstore/detail/calculadora-google-maps/gjflgeiephgjeainbiedojpldcjnejed" target="_blank">
-                    <img class="d-inline-block align-center" src="https://i.imgur.com/FvzvUhu.png" width="48px" height="48px"/>        
-                </a>
-                <h5 class="calc-title">Calculadora Google Maps</h5>
+        <div id="calc-header">            
+            <div class="row col-3">
+                <div class="calc-logo">
+                    <a href="https://chrome.google.com/webstore/detail/calculadora-google-maps/gjflgeiephgjeainbiedojpldcjnejed" target="_blank">
+                        <img class="d-inline-block align-center" src="https://i.imgur.com/FvzvUhu.png" width="48px" height="48px"/>                 
+                    </a>                
+                    <h5>Calculadora Google Maps</h5>
+                </div>
             </div>
-            <!-- Distancia -->            
-            <div class="collapse navbar-collapse">                
-                <div class="form-inline my-2 my-lg-0">
-                    <h5 class="navbar-nav mr-2">Distância:</h5>
-                    <input id="distancia" type="text" class="form-control mr-4" placeholder="0 km">
-                    <!-- Litros -->            
-                    <h5 class="navbar-nav mr-2">Combustível:</h5>    
-                    <input id="combustivel" type="text" class="form-control  mr-4" placeholder="0 Lts">
-                    <!-- Valor Reembolso -->            
-                    <h5 class="navbar-nav mr-2">Reembolso:</h5>
-                    <input id="reembolso" type="text" class="form-control  mr-4" placeholder="R$ 0">
-                    <!-- Botão -->    
-                    <button class="btn btn-success" id="btnCalculate">Calcular</button>  
-                    <button class="btn btn-danger" id="btnReport">Gerar Relatório</button>                    
+            <div class="calc-results row">
+                <div class="calc-result-item col-2">
+                    <!-- Distancia -->                     
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <img id="img-map" src="../img/map.svg" width="22" alt="">
+                            </span>
+                        </div>
+                        <input class="form-control" id="distancia" placeholder="Distância"></input> 
+                    </div>                     
+                </div>                                                 
+                <div class="calc-result-item col-2">
+                    <!-- Distancia -->                     
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <img id="img-fuel" src="../img/fuel.svg" width="22" alt="">
+                            </span>
+                        </div>
+                        <input class="form-control" id="combustivel" placeholder="Combustível"></input> 
+                    </div>                     
+                </div>                                                  
+                <div class="calc-result-item col-2">
+                    <!-- Distancia -->                     
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <img id="img-refund" src="../img/refund.svg" width="22" alt="">
+                            </span>
+                        </div>
+                        <input class="form-control" id="reembolso" placeholder="Reembolso"></input> 
+                    </div>                     
+                </div>   
+                <div class="calc-result-item col-1">
+                    <button class="btn btn-success" id="btnCalculate">Calcular</button>                      
+                </div>
+                <div class="calc-result-item col-1">
+                    <button class="btn btn-danger" id="btnReport">Gerar Relatório</button>
                 </div>                
-            </div>  
-            <a id="btnClose">
-                
-            </a>            
-        </nav>          
+            </div>                              
+            <div id="btnClose">
+                <a href="#">
+                    <img src="../img/close.svg" alt="Fechar" width="32px" >
+                </a>
+            </div>        
+        </div>              
     </div>
 </body>

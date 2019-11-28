@@ -23,10 +23,10 @@
       ]
     }],
     "web_accessible_resources": [
-      "img/*.png",
-      "img/*.svg",
-      "css/*.css",
-      "js/*.js",
+      "img/*",      
+      "css/*",
+      "js/*",
+      "fonts/*",
       "html/*.html"
     ]               
   }

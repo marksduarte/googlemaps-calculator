@@ -23,7 +23,7 @@ function createNewWindow(report) {
     var targetId = null;
     chrome.tabs.onUpdated.addListener(function listener(tabId, changedProps) {
         if(tabId !== targetId || changedProps.status !== "complete") return;
-        chrome.runtime.sendMessage({message: "load_new_window", data: report});
+        chrome.runtime.sendMessage({message: "load_new_window", report: report});
     });
     var newWindowUrl = chrome.extension.getURL('html/report.html');
     chrome.windows.create({url: newWindowUrl, type: "popup"}, function(window) {

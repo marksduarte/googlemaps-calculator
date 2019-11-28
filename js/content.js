@@ -5,7 +5,10 @@
  */
 
 $(function(){
-    $('#colaborador').val('Marks 1');
+    showApp();
+});
+
+function showApp() {    
     if(document.title.indexOf("Google") !== -1) {       
         var request = new XMLHttpRequest();
         request.open('GET', chrome.extension.getURL('html/popup.html'), true);
@@ -24,16 +27,19 @@ $(function(){
                     shadowRoot.querySelector('#btnClose').addEventListener('click', onBtnCloseClick);
                     shadowRoot.querySelector('#btnCalculate').addEventListener('click', onBtnCalculateClick);
                     shadowRoot.querySelector('#btnReport').addEventListener('click', onBtnReportClick);
+                    shadowRoot.querySelector('#btnClose a img').src = chrome.extension.getURL("img/close.svg");
+                    shadowRoot.querySelector('#img-map').src = chrome.extension.getURL("img/map.svg");
+                    shadowRoot.querySelector('#img-fuel').src = chrome.extension.getURL("img/fuel.svg");
+                    shadowRoot.querySelector('#img-refund').src = chrome.extension.getURL("img/refund.svg");
                     
-                    include(chrome.extension.getURL("css/popup.css"));
                     include(chrome.extension.getURL("css/bootstrap.min.css"));
-                    include(chrome.extension.getURL("css/bootstrap-datepicker.standalone.min.css"));                                                           
-                    include(chrome.extension.getURL("img/close.svg"));                                                           
+                    include(chrome.extension.getURL("css/bootstrap-datepicker.standalone.min.css"));  
+                    include(chrome.extension.getURL("css/popup.css"));                                                         
                 }
             }
         }                                    
     }
-});
+}
 
 function include(path) {
     let el;
@@ -46,14 +52,7 @@ function include(path) {
         el = document.createElement('script');
         el.type = 'text/javascript';
         el.src = path;        
-    }       
-    if(path.endsWith('.svg')) {
-        el = document.createElement('img');       
-        el.src = path;
-        el.alt = "Fechar";
-        shadowRoot.getElementById('btnClose').appendChild(el);
-        return;
-    }       
+    }    
     shadowRoot.appendChild(el);
 }
 
@@ -61,14 +60,15 @@ function turnOffEvents() {
     // Usar $.off() para desativar o evento dos inputs de destino.
 }
 
-function onBtnCalculateClick() {      
+function onBtnCalculateClick() {          
+    if(getKmtotal() <= 0) return;
     report = {};  
     report.distancia = getKmtotal();
     report.trajetos = getTrajetos().slice();    
     report.kmMediaAno = 12000;    
     report.kmLitro = 10;
     report.vlLitro = 4.29;
-    report.combustivel = report.distancia / report.kmLitro;
+    report.combustivel = (report.distancia / report.kmLitro).toFixed(2);
     report.consumo = report.vlLitro / report.kmLitro;
     report.vlFipe = 28935; //Grand Siena ATTRAC. 1.4 EVO F.Flex 8V
     report.vlSeguro = 120;
@@ -85,11 +85,15 @@ function onBtnCalculateClick() {
     shadowRoot.querySelector('#reembolso').value = report.vlReembolso;      
 }
 
-function onBtnReportClick() {   
-    chrome.runtime.sendMessage({
-        message: "create_new_window", 
-        report: report
-    });
+function onBtnReportClick() {  
+    try {
+        chrome.runtime.sendMessage({
+            message: "create_new_window", 
+            report: report
+        });
+    } catch (error) {
+        console.log('É necessário calcular um trajeto antes de emitir o relatório.')
+    }    
 }
 
 function onBtnCloseClick() {
@@ -99,10 +103,14 @@ function onBtnCloseClick() {
 }
 
 function getKmtotal(){
-    let elementsByClassName = document.getElementsByClassName('section-directions-trip-distance section-directions-trip-secondary-text');
-    let txt = elementsByClassName[0].innerText;
-    if(txt !== "" && txt.endsWith("km")) {
-        return textToFloat(txt);
+    try {
+        let elementsByClassName = 
+        document.getElementsByClassName('section-directions-trip-distance section-directions-trip-secondary-text');
+        let txt = elementsByClassName[0].innerText;
+        if(txt !== "" && txt.endsWith("km")) return textToFloat(txt);        
+    } catch (error) {
+        console.log('Defina um trajeto antes de calcular.')
+        return 0;
     }
 }
 

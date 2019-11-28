@@ -1,23 +1,12 @@
-ul {
-    list-style: none;
-}
-.row {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-.btn {
-    width: 160px;
-    margin-right: 10px;
-}
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css");
 
 /* Estilos da barra */
-
 #calculadora-google-maps {  
     font-family: 'Open Sans', sans-serif;
     z-index: 2147483647;
     min-width: 450px;
     min-height: auto;
-    width: 100%;
+    width: 100%;    
     position: fixed;
     top: 0;    
     left: 0;
@@ -27,35 +16,39 @@ ul {
     background-color:#4285f4; /*#0d2d42*/;   
     color: white;
     padding: 5px;       
-    display: flex;
-    flex-direction: row;
-    justify-content: left;  
+    display: flex;    
+    flex-direction: row;    
     align-items: center;    
+    min-width: inherit;
+    height: 65px;
 }
-#calc-body {  
-    background-color: white;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;    
-}
-#btnClose {        
-    height: auto;
-    width: 32px;
-    margin-right: 5px;
-}
-#btnClose :hover{
-    cursor: pointer;
+#btnClose {
+    position: fixed; 
+    align-items: center;  
+    right: 2%;  
 }
 .calc-logo {
-    color: white;
-    display: flex;    
-    flex-direction: row;   
-    align-items: center;    
+    color: white;    
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center; 
 }
 .calc-logo a img {
     margin-right: 10px;
 }
-.calc-title {
-    padding-top: 10px;
+.calc-logo h5 {
+    margin-top: 10px;
+}
+.calc-results {
+    display: flex;
+    flex-direction: row;    
+    align-items: center;
+}
+.calc-result-item {
+    flex: 1;
+}
+.calc-label {
+    margin-right: 10px;
+    text-align: left;    
 }

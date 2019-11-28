@@ -1,8 +1,11 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css");
+
 .report-title {
     background-color: #0d2d42;
 }
 .horizontalLine {
     margin: auto;
+    margin-top: 30px;
     transform: rotate(0deg);
     width: 50%;
     height: 2px;
@@ -17,4 +20,16 @@
 }
 .row {
     margin-bottom: 10px;
+}
+ul {
+    list-style: none;
+}
+@media print {
+    body {
+        -webkit-print-color-adjust: exact;
+    }
+
+    #btnPrint {
+        visibility: hidden;
+    }
 }
