@@ -2,7 +2,7 @@
     "name": "Calculadora Google Maps",
     "short_name": "Calculadora Maps",
     "description": "Calcula o valor do reembolso e a quantidade de combustível necessária para percorrer o trajeto definido no Google Maps.",
-    "version": "1.0.1",
+    "version": "1.1.1",
     "manifest_version": 2,
     "permissions": ["tabs", "background"],
     "homepage_url":"https://marksduarte.github.io",

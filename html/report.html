@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8"/>  
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/bootstrap-datepicker.standalone.min.css">
-    <link rel="stylesheet" href="../css/font-awesome.css">
+    <link rel="stylesheet" href="../css/bootstrap-datepicker.standalone.min.css">    
     <link rel="stylesheet" type="text/css" href="../css/report.css"/>
     <link rel="shortcut icon" href="../img/icon.png" type="image/x-icon">
     <title>Relatório</title>
@@ -61,71 +60,74 @@
     </div>
     <div class="dropdown-divider"></div>
     <!--Formulário-->
-    <form action="">
-      <div class="row">   
-        <!-- Data -->     
-        <div class="col-3">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-                  </span>
-              </div>
-              <input autocomplete="off" type="text" id="dtRelatorio" class="form-control date" maxlength="10">
-            </div>          
-        </div>
-        <!-- O.S -->
-        <div class="col-3">
-            <div class="input-group">
+    <form id="report-form" action="">
+      <div id="report-session-employee" class="row"> 
+          <!-- Data -->     
+          <div class="col-3">
+              <div class="input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text"><b>O.S</b></span>
+                    <span class="input-group-text">
+                      <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                    </span>
                 </div>
-                <input autocomplete="off" class="form-control numOS" id="numOS">
-            </div>
-        </div>   
-        <!-- Cliente -->
-        <div class="col">
+                <input autocomplete="off" type="text" id="dtRelatorio" class="form-control date" maxlength="10">
+              </div>          
+          </div>
+          <!-- Setor -->
+          <div class="col-3">
+            <select id="setor" class="form-control input-group-text">
+              <option selected>Setor</option>
+              <option>Adm. Distrital</option>
+              <option>Adm. Federal</option>
+              <option>Cível</option>
+              <option>Consultivo</option>
+              <option>Criminal</option>
+              <option>Diretoria</option>
+              <option>Localização</option>
+              <option>Previdenciário</option>
+              <option>Proc. Especiais</option>
+              <option>Trabalhista</option>
+              <option>Tributário</option>
+            </select>
+          </div>  
+          <!-- Colaborador -->
+          <div class="col-6">
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-user"></i></span>
                 </div>
-                <input autocomplete="off" class="form-control" id="cliente" placeholder="Nome do cliente">
+                <input class="form-control" id="colaborador" placeholder="Colaborador">
             </div>
-        </div>                          
-      </div>    
+          </div>           
+      </div>
       <div class="dropdown-divider"></div>
-      <div class="row"> 
-        <div class="col-3">
-
-        </div>
-        <!-- Setor -->
-        <div class="col-3">
-          <select id="setor" class="form-control input-group-text">
-            <option selected>Setor</option>
-            <option>Adm. Distrital</option>
-            <option>Adm. Federal</option>
-            <option>Cível</option>
-            <option>Consultivo</option>
-            <option>Criminal</option>
-            <option>Diretoria</option>
-            <option>Localização</option>
-            <option>Previdenciário</option>
-            <option>Proc. Especiais</option>
-            <option>Trabalhista</option>
-            <option>Tributário</option>
-          </select>
-        </div>  
-        <!-- Colaborador -->
-        <div class="col-6">
-          <div class="input-group">
-              <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fa fa-user"></i></span>
+      <!--Cliente-->
+      <div id="report-session-client"> 
+        <div class="report-session-client-item row">
+          <!-- O.S -->
+          <div class="col-3">
+              <div class="input-group">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text"><b>O.S</b></span>
+                  </div>
+                  <input autocomplete="off" class="form-control numOS">
               </div>
-              <input class="form-control" id="colaborador" placeholder="Colaborador">
-          </div>
-        </div>           
-      </div> 
-      <div class="row">
+          </div>   
+          <!-- Cliente -->
+          <div class="col-9">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                </div>
+                <input autocomplete="off" class="form-control mr-2 cliente" placeholder="Nome do cliente">
+                <button class="btn btn-secondary btn-clone-item mr-2"><i class="fa fa-plus"></i></button>
+                <button class="btn btn-danger btn-remove-item invisible"><i class="fa fa-minus"></i></button>
+            </div>
+        </div>
+        </div>                                 
+      </div>    
+      <div class="dropdown-divider"></div>       
+      <div class="report-session-obs row">
         <div class="col-12">
             <h6>Observações</h6>
             <textarea autocomplete="off" id="observacoes" class="form-control" rows="2"></textarea>
@@ -140,7 +142,7 @@
     </div>
     <footer class="blockquote-footer">
         <p>
-            <strong>Observação:</strong> O reembolso será pago quinzenalmente via transferência bancária de acordo com as solicitações entregues até o dia anterior ao do pagamento.
+            <strong>Observação:</strong> O reembolso será pago conforme deliberação da diretoria do escritório e de acordo com as solicitações devidamente autorizadas pelos supervisores entregues na tesouraria.
             <br>
             <strong>Critérios de cálculo:</strong> Quilometragem média anual, Seguro obrigatório, Licenciamento, Valor médio de revisão anual e Depreciação do veículo.
         </p>
@@ -148,8 +150,7 @@
     <div class="mt-2 float-right" >
         <button id="btnPrint" class="btn btn-dark"><span><i class="fa fa-print"></i></span> Imprimir</button>
     </div>
-  </div>
-  
+  </div>  
 </div>
 <script type="application/javascript" src="../js/jquery-3.4.1.min.js"></script>
 <script type="application/javascript" src="../js/jquery.mask.min.js"></script>
