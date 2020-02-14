@@ -1,32 +1,41 @@
-{    
-    "name": "Calculadora Google Maps",
-    "short_name": "Calculadora Maps",
-    "description": "Calcula o valor do reembolso e a quantidade de combustível necessária para percorrer o trajeto definido no Google Maps.",
-    "version": "1.1.1",
-    "manifest_version": 2,
-    "permissions": ["tabs", "background"],
-    "homepage_url":"https://marksduarte.github.io",
-    "browser_action": {
-      "default_title": "Calculadora Google Maps",
-      "default_icon": "img/icon.png"      
-    },
-    "background": {                
-      "scripts": ["js/background.js"],
-      "persistent": false      
-    },
-    "content_scripts": [{
-      "matches": ["https://www.google.com.br/maps/dir/*"],
-      "all_frames": true,      
+{
+  "name": "Calculadora Google Maps",
+  "short_name": "Calculadora Maps",
+  "description": "Calcula o valor do reembolso e a quantidade de combustível necessária para percorrer o trajeto definido no Google Maps.",
+  "version": "1.1.2",
+  "manifest_version": 2,
+  "permissions": [
+    "tabs",
+    "background"
+  ],
+  "homepage_url": "https://marksduarte.github.io",
+  "browser_action": {
+    "default_title": "Calculadora Google Maps",
+    "default_icon": "img/icon.png"
+  },
+  "background": {
+    "scripts": [
+      "js/background.js"
+    ],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.google.com.br/maps/dir/*"
+      ],
+      "all_frames": true,
       "js": [
-        "js/jquery-3.4.1.min.js",          
+        "js/jquery-3.4.1.min.js",
         "js/content.js"
       ]
-    }],
-    "web_accessible_resources": [
-      "img/*",      
-      "css/*",
-      "js/*",
-      "fonts/*",
-      "html/*.html"
-    ]               
-  }
+    }
+  ],
+  "web_accessible_resources": [
+    "img/*",
+    "css/*",
+    "js/*",
+    "fonts/*",
+    "html/*.html"
+  ]
+}
