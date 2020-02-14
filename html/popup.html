@@ -1,152 +1,63 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">   
-    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
-    <title>Calculadora</title>
-</head>
+<link rel="stylesheet" href="../css/popup.css">
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../fonts/css/font-awesome.css">
 <body>
-<div id="formulario" class="container-fluid popup-width">
-    <div class="row mb-2 pl-1 pt-2 pb-2 border-dark bg-title text-white">
-        <img src="../img/logo.png" width="40px" height="40px" alt="logo"/>
-        <h5 class="pl-2 pt-2">Calculadora de Combustível</h5>
-    </div>
-    <div class="row mb-2">
-        <!-- O.S -->
-        <div class="col-6">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="pt-md-2 input-group-text"><b>O.S</b></span>
+    <div id="calculadora-google-maps">
+        <div id="calc-header">            
+            <div class="row col-3">
+                <div class="calc-logo">
+                    <a href="https://chrome.google.com/webstore/detail/calculadora-google-maps/gjflgeiephgjeainbiedojpldcjnejed" target="_blank">
+                        <img class="d-inline-block align-center" src="https://i.imgur.com/FvzvUhu.png" width="48px" height="48px"/>                 
+                    </a>                
+                    <h5>Calculadora Google Maps</h5>
                 </div>
-                <input autocomplete="off" class="form-control numOS" id="numOS">
             </div>
-        </div>
-        <div class="col-6">
-                <select id="setor" class="form-control input-group-text" required>
-                    <option selected>Setor</option>
-                    <option>Adm. Distrital</option>
-                    <option>Adm. Federal</option>
-                    <option>Cível</option>
-                    <option>Consultivo</option>
-                    <option>Criminal</option>
-                    <option>Diretoria</option>
-                    <option>Localização</option>
-                    <option>Previdenciário</option>
-                    <option>Proc. Especiais</option>
-                    <option>Trabalhista</option>
-                    <option>Tributário</option>
-                </select>
-            </div>
-    </div>    
-    <div class="row">
-        <!-- Colaborador -->
-        <div class="col-12">
-            <div class="input-group">
-                <input required autocomplete="off" class="form-control" id="colaborador" placeholder="Colaborador">
-            </div>
-        </div>
-    </div>
-    <div class="dropdown-divider"></div>
-    <div class="row">
-        <!-- Valor do Litro -->
-        <div class="col-6">
-            <h6>Custo do litro</h6>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="pt-md-2 input-group-text"><b>R$</b></span>
+            <div class="calc-results row">
+                <div class="calc-result-item col-2">
+                    <!-- Distancia -->                     
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <img id="img-map" src="../img/map.svg" width="22" alt="">
+                            </span>
+                        </div>
+                        <input class="form-control" id="distancia" placeholder="Distância"></input> 
+                    </div>                     
+                </div>                                                 
+                <div class="calc-result-item col-2">
+                    <!-- Combustível -->                     
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <img id="img-fuel" src="../img/fuel.svg" width="22" alt="">
+                            </span>
+                        </div>                        
+                        <input class="form-control" id="combustivel" placeholder="Litros"></input> 
+                    </div>                     
+                </div>                                                  
+                <div class="calc-result-item col-2">
+                    <!-- Reembolso -->                     
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <img id="img-refund" src="../img/refund.svg" width="22" alt="">
+                            </span>
+                        </div>
+                        <input class="form-control" id="reembolso" placeholder="Reembolso"></input> 
+                    </div>                     
+                </div>   
+                <div class="calc-result-item col-1">
+                    <button class="btn btn-success" id="btnCalculate">Calcular</button>                      
                 </div>
-                <input required class="form-control" id="valorPorLitro">
-            </div>
-        </div>
-        <!-- KM/Litro -->
-        <div class="col-6">
-            <h6>Consumo</h6>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="pt-md-2 input-group-text"><b>Km/L</b></span>
-                </div>
-                <input class="form-control" id="kmPorLitro">
-            </div>
-        </div>
+                <div class="calc-result-item col-1">
+                    <button class="btn btn-danger" id="btnReport">Gerar Relatório</button>
+                </div>                
+            </div>                              
+            <div id="btnClose">
+                <a href="#">
+                    <img src="../img/close.svg" alt="Fechar" width="32px" >
+                </a>
+            </div>        
+        </div>              
     </div>
-    <div class="row mt-2">
-        <!-- Distancia -->
-        <div class="col-6">
-            <h6>Distância</h6>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="pt-md-2 input-group-text"><b>Km</b></span>
-                </div>
-                <input disabled class="form-control" id="kmTotal">
-            </div>
-        </div>
-        <!-- Litros -->
-        <div class="col-6">
-            <h6>Combustível</h6>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="pt-md-2 input-group-text"><b>Lt</b></span>
-                </div>
-                <input disabled class="form-control" id="litros">
-            </div>
-        </div>
-    </div>    
-    <!-- Base de cálculo -->
-    <div class="row mt-2" style="display: none;">
-        <div class="dropdown-divider"></div>
-        <div class="col-6">
-            <h6>Base de cálculo</h6>
-            <div class="custom-control custom-radio custom-control-inline">  
-                <input type="radio" name="radioBaseCalculo" id="baseLitro" class="custom-control-input" value="litro" checked>
-                <label for="baseLitro" class="custom-control-label">Litro</label>
-            </div>            
-            <div class="custom-control custom-radio custom-control-inline">  
-                <input type="radio" name="radioBaseCalculo" id="baseKm" class="custom-control-input" value="km">
-                <label for="baseKm" class="custom-control-label">Km</label>
-            </div>
-        </div>
-        <div class="col-6">
-            <h6><span style="opacity:0;">invisible</span></h6>
-            <div class="text-center">                                     
-                <h6 class="card-text font-weight-bold" id="fatorCalculo"></h6>  
-            </div>
-        </div>
-    </div>
-    <div class="dropdown-divider"></div>
-    <div class="row mt-2 mb-2">
-        <!-- Valor Reembolso -->
-        <div class="col-6">
-            <h6>Reembolso</h6>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="pt-md-2 input-group-text"><b>R$</b></span>
-                </div>
-                <input disabled class="form-control" id="valorReembolso">
-            </div>
-        </div>
-        <!-- Botão -->
-        <div class="col-6">
-            <h6><span style="opacity:0;">invisible</span></h6>
-            <button class="btn btn-success btn-block" id="btnCalcular">Calcular</button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <h6>Observações</h6>
-            <textarea id="observacoes" class="form-control" rows="2"></textarea>
-        </div>
-    </div>
-    <div class="dropdown-divider"></div>
-    <div class="row mt-2 mb-2">
-        <div class="col-12">
-            <button class="btn btn-danger btn-lg btn-block" id="btnImprimir">Gerar Relatório</button>
-        </div>
-    </div>
-</div>
-<script type="application/javascript" src="../js/jquery.min.js"></script>
-<script type="application/javascript" src="../js/jquery.mask.min.js"></script>
-<script type="application/javascript" src="../js/extension.js"></script>
 </body>
-</html>

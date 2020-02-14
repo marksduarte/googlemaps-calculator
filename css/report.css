@@ -1,0 +1,35 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css");
+
+.report-title {
+    background-color: #0d2d42;
+}
+.horizontalLine {
+    margin: auto;
+    margin-top: 30px;
+    transform: rotate(0deg);
+    width: 50%;
+    height: 2px;
+    background: #1b1e21;
+}
+.sign {
+    text-align: center;
+}
+.tab {
+    display: inline-block;
+    margin-left: 20px;    
+}
+.row {
+    margin-bottom: 10px;
+}
+ul {
+    list-style: none;
+}
+@media print {
+    body {
+        -webkit-print-color-adjust: exact;
+    }
+
+    #btnPrint {
+        visibility: hidden;
+    }
+}
