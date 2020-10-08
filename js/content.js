@@ -4,10 +4,7 @@
  *
  */
 
-var URL_DADOS_ANP =
-  "http://www.anp.gov.br/images/Precos/Mensal2013/MENSAL_ESTADOS-DESDE_Jan2013.xlsx";
-var URL_GITHUB =
-  "https://marksduarte.github.io/resources/googlemaps-calculator.json";
+const URL_GITHUB = "https://marksduarte.dev/resources/consulta-combustiveis.json";
 var vlLitro;
 
 $(function () {

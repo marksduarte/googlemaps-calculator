@@ -8,7 +8,7 @@
     "tabs",
     "background"
   ],
-  "homepage_url": "https://marksduarte.github.io",
+  "homepage_url": "https://chrome.google.com/webstore/detail/calculadora-google-maps/gjflgeiephgjeainbiedojpldcjnejed",
   "browser_action": {
     "default_title": "Calculadora Google Maps",
     "default_icon": "img/icon.png"
